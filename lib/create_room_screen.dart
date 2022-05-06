@@ -82,17 +82,19 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
               });
             },
           ),
-          const SizedBox(height: 20,),
+          const SizedBox(
+            height: 20,
+          ),
           DropdownButton<String>(
             focusColor: const Color(0xffF5F6FA),
-            hint:  Text(
+            hint: Text(
               _maxRoomSize ?? 'Select Room Size  ',
               style: const TextStyle(
                   color: Colors.black,
                   fontSize: 14,
                   fontWeight: FontWeight.w500),
             ),
-            items: <String>['2', '3', '4', '5','6','7','8']
+            items: <String>['2', '3', '4', '5', '6', '7', '8']
                 .map<DropdownMenuItem<String>>(
                   (String value) => DropdownMenuItem(
                     value: value,
@@ -106,26 +108,28 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
               });
             },
           ),
-          const SizedBox(height: 40,),
-   ElevatedButton(
-                onPressed: () {},
-                child: const Text(
-                  'Create',
-                  style: TextStyle(fontSize: 16),
-                ),
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.blue),
-                  textStyle: MaterialStateProperty.all(
-                    const TextStyle(color: Colors.white),
-                  ),
-                  minimumSize: MaterialStateProperty.all(
-                    Size(
-                      size.width / 2.5,
-                      50,
-                    ),
-                  ),
+          const SizedBox(
+            height: 40,
+          ),
+          ElevatedButton(
+            onPressed: () {},
+            child: const Text(
+              'Create',
+              style: TextStyle(fontSize: 16),
+            ),
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all(Colors.blue),
+              textStyle: MaterialStateProperty.all(
+                const TextStyle(color: Colors.white),
+              ),
+              minimumSize: MaterialStateProperty.all(
+                Size(
+                  size.width / 2.5,
+                  50,
                 ),
               ),
+            ),
+          ),
         ],
       ),
     );
