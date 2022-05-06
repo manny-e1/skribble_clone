@@ -162,6 +162,9 @@ io.on('connection', (socket) => {
   socket.on('stroke-width', ({ value, roomName }) => {
     io.to(roomName).emit('stroke-width', value);
   });
+  socket.on('clean-screen', (roomName) => {
+    io.to(roomName).emit('clear-screen', '');
+  });
 });
 
 server.listen(port, '0.0.0.0', () => {
