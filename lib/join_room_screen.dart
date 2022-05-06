@@ -17,7 +17,7 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
   void joinRoom() {
     if (_nameController.text.isNotEmpty &&
         _roomNameController.text.isNotEmpty) {
-      Map<String, String?> data = {
+      Map<String, String> data = {
         "nickname": _nameController.text,
         "name": _roomNameController.text,
       };

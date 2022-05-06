@@ -21,11 +21,11 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
         _roomNameController.text.isNotEmpty &&
         _maxRoomSize != null &&
         _maxRoundValue != null) {
-      Map<String, String?> data = {
+      Map<String, String> data = {
         "nickname": _nameController.text,
         "name": _roomNameController.text,
-        "occupancy": _maxRoundValue,
-        "maxRounds": _maxRoomSize
+        "occupancy": _maxRoundValue!,
+        "maxRounds": _maxRoomSize!
       };
       Navigator.of(context).push(MaterialPageRoute(
           builder: (context) =>
