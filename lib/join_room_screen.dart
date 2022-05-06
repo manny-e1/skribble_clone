@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:skribbl_clone/enums.dart';
+import 'package:skribbl_clone/paint_screen.dart';
 import 'package:skribbl_clone/widgets/custom_text_field.dart';
 
 class JoinRoomScreen extends StatefulWidget {
@@ -11,6 +13,19 @@ class JoinRoomScreen extends StatefulWidget {
 class _JoinRoomScreenState extends State<JoinRoomScreen> {
   final _nameController = TextEditingController();
   final _roomNameController = TextEditingController();
+
+  void joinRoom() {
+    if (_nameController.text.isNotEmpty &&
+        _roomNameController.text.isNotEmpty) {
+      Map<String, String?> data = {
+        "nickname": _nameController.text,
+        "name": _roomNameController.text,
+      };
+      Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) =>
+              PaintScreen(data: data, screenFrom: ScreenFrom.createRoom)));
+    }
+  }
 
   @override
   void dispose() {
@@ -58,7 +73,7 @@ class _JoinRoomScreenState extends State<JoinRoomScreen> {
             height: 40,
           ),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: joinRoom,
             child: const Text(
               'Join',
               style: TextStyle(fontSize: 16),

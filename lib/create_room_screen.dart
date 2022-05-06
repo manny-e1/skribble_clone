@@ -131,7 +131,7 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
             height: 40,
           ),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: createRoom,
             child: const Text(
               'Create',
               style: TextStyle(fontSize: 16),
