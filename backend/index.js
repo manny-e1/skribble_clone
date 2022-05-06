@@ -154,6 +154,10 @@ io.on('connection', (socket) => {
   socket.on('paint', ({ details, roomName }) => {
     io.to(roomName).emit('points', { details: details });
   });
+
+  socket.on('color-change', ({ color, roomName }) => {
+    io.to(roomName).emit('color-change', color);
+  });
 });
 
 server.listen(port, '0.0.0.0', () => {
