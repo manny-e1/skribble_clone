@@ -158,6 +158,10 @@ io.on('connection', (socket) => {
   socket.on('color-change', ({ color, roomName }) => {
     io.to(roomName).emit('color-change', color);
   });
+
+  socket.on('stroke-width', ({ value, roomName }) => {
+    io.to(roomName).emit('stroke-width', value);
+  });
 });
 
 server.listen(port, '0.0.0.0', () => {
