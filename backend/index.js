@@ -28,7 +28,7 @@ app.use(express.json());
 
 io.on('connection', (socket) => {
   console.log('connected');
-  // CREATE GAME CALLBACK
+
   socket.on('create-game', async ({ nickname, name, occupancy, maxRounds }) => {
     try {
       const existingRoom = await Room.findOne({ name });
@@ -94,8 +94,8 @@ io.on('connection', (socket) => {
     console.log(data);
     try {
       if (data.msg === data.word) {
-        let room = await Room.find({ name: data.roomName });
-        let userPlayer = room[0].players.filter(
+        let room = await Room.findOne({ name: data.roomName });
+        let userPlayer = room.players.filter(
           (player) => player.nickname === data.username
         );
         if (data.timeTaken !== 0) {
@@ -162,9 +162,11 @@ io.on('connection', (socket) => {
   socket.on('stroke-width', ({ value, roomName }) => {
     io.to(roomName).emit('stroke-width', value);
   });
+
   socket.on('clean-screen', (roomName) => {
     io.to(roomName).emit('clear-screen', '');
   });
+
   socket.on('disconnect', async () => {
     try {
       let room = await Room.findOne({ 'players.socketID': socket.id });
