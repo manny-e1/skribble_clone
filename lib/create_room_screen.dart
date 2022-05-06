@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:skribbl_clone/enums.dart';
+import 'package:skribbl_clone/paint_screen.dart';
 import 'package:skribbl_clone/widgets/custom_text_field.dart';
 
 class CreateRoomScreen extends StatefulWidget {
@@ -13,6 +15,23 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
   final _roomNameController = TextEditingController();
   String? _maxRoundValue;
   String? _maxRoomSize;
+
+  void createRoom() {
+    if (_nameController.text.isNotEmpty &&
+        _roomNameController.text.isNotEmpty &&
+        _maxRoomSize != null &&
+        _maxRoundValue != null) {
+      Map<String, String?> data = {
+        "nickname": _nameController.text,
+        "name": _roomNameController.text,
+        "occupancy": _maxRoundValue,
+        "maxRounds": _maxRoomSize
+      };
+      Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) =>
+              PaintScreen(data: data, screenFrom: ScreenFrom.createRoom)));
+    }
+  }
 
   @override
   void dispose() {
