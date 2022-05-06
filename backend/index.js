@@ -141,6 +141,15 @@ io.on('connection', (socket) => {
       console.log(err);
     }
   });
+
+  socket.on('updateScore', async (name) => {
+    try {
+      const room = await Room.findOne({ name });
+      io.to(name).emit('updateScore', room);
+    } catch (err) {
+      console.log(err);
+    }
+  });
 });
 
 server.listen(port, '0.0.0.0', () => {
