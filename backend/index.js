@@ -47,6 +47,7 @@ io.on('connection', (socket) => {
         nickname,
         isPartyLeader: true,
       };
+      console.log(player);
       room.players.push(player);
       room = await room.save();
       socket.join(name);

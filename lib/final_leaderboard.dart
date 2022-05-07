@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class FinalLeaderboard extends StatelessWidget {
-  final List<Map<String,dynamic>> scoreboard;
+  final List scoreboard;
   final String winner;
   // ignore: use_key_in_widget_constructors
   const FinalLeaderboard(this.scoreboard, this.winner);

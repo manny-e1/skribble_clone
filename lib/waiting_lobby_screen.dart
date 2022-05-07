@@ -5,7 +5,7 @@ class WaitingLobbyScreen extends StatefulWidget {
   final int occupancy;
   final int noOfPlayers;
   final String lobbyName;
-  final List<Map<String,dynamic>> players;
+  final List players;
   const WaitingLobbyScreen(
       {Key? key,
       required this.occupancy,
