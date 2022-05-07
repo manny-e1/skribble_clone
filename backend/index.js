@@ -1,10 +1,10 @@
 const express = require('express');
 var http = require('http');
-var server = http.createServer(app);
 const mongoose = require('mongoose');
-const Room = require('./models/Room');
-var io = require('socket.io')(server);
+const Room = require('./models/room');
 const getWord = require('./api/getWord');
+const dotenv = require('dotenv');
+const cors = require('cors');
 
 dotenv.config();
 
@@ -12,9 +12,8 @@ const app = express();
 
 const port = (process.env.PORT = 3000);
 
-let server = http.createServer(app);
-
-const io = socket(server);
+const server = http.createServer(app);
+var io = require('socket.io')(server);
 
 mongoose
   .connect(process.env.MONGO_URL)
@@ -163,7 +162,7 @@ io.on('connection', (socket) => {
     io.to(roomName).emit('stroke-width', value);
   });
 
-  socket.on('clean-screen', (roomName) => {
+  socket.on('clean-screen', ({ roomName }) => {
     io.to(roomName).emit('clear-screen', '');
   });
 
